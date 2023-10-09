@@ -1,0 +1,48 @@
+service: live-chatbot
+
+configValidationMode: error
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  memorySize: 256
+  stage: dev
+  profile: default
+  region: "eu-west-1"
+
+functions:
+  connect:
+    handler: src/handlers/connect.handle
+    events:
+      - websocket:
+          route: $connect
+  disconnect:
+    handler: src/handlers/disconnect.handle
+    events:
+      - websocket:
+          route: $disconnect
+  default:
+    handler: src/handlers/default.handle
+    events:
+      - websocket:
+          route: $default
+
+resources:
+  Resources:
+    WebSocketConnectionsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: WebSocketConnections
+        AttributeDefinitions:
+          - AttributeName: connectionId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: connectionId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+
+custom:
+  bundle:
+    linting: false
