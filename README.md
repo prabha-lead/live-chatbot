@@ -1,4 +1,4 @@
-# Serverless POC
+# Serverless POC - Live Chatbot
 
 ## For AWS Configurations
 
