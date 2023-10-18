@@ -1,31 +1,37 @@
 const AWS = require("aws-sdk");
 const { SessionsClient } = require("@google-cloud/dialogflow");
 
-const client = new SessionsClient();
+const config = {
+  credentials: {
+    private_key: process.env.PRIVATE_KEY,
+    client_email: process.env.CLIENT_EMAIL,
+  },
+};
+const client = new SessionsClient(config);
 
 exports.handle = async (event) => {
-  const connectionId = event.requestContext.connectionId;
-  const userInput = JSON.parse(event.body).message;
-
-  const sessionPath = client.projectAgentSessionPath(
-    "YOUR_PROJECT_ID",
-    "YOUR_SESSION_ID"
-  );
-  const request = {
-    session: sessionPath,
-    queryInput: {
-      text: {
-        text: userInput,
-        languageCode: "en-US",
-      },
-    },
-  };
-
-  const apiGateway = new AWS.ApiGatewayManagementApi({
-    endpoint: `${event.requestContext.domainName}/${event.requestContext.stage}`,
-  });
-
   try {
+    const connectionId = event.requestContext.connectionId;
+    const userInput = JSON.parse(event.body).message;
+
+    const sessionPath = client.projectAgentSessionPath(
+      process.env.PROJECT_ID,
+      process.env.SESSION_ID
+    );
+    const request = {
+      session: sessionPath,
+      queryInput: {
+        text: {
+          text: userInput,
+          languageCode: "en-US",
+        },
+      },
+    };
+
+    const apiGateway = new AWS.ApiGatewayManagementApi({
+      endpoint: `${event.requestContext.domainName}/${event.requestContext.stage}`,
+    });
+
     const responses = await client.detectIntent(request);
     const result = responses[0].queryResult.fulfillmentText;
 

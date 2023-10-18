@@ -9,6 +9,11 @@ provider:
   stage: dev
   profile: default
   region: "eu-west-1"
+  environment:
+    PROJECT_ID: "torp-xxxxx"
+    SESSION_ID: "981dbc33-************"
+    PRIVATE_KEY: "-----BEGIN PRIVATE KEY-----****-----END PRIVATE KEY-----\n"
+    CLIENT_EMAIL: "******.iam.gserviceaccount.com"
 
 functions:
   connect:
