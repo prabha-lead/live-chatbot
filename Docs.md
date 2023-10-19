@@ -1,6 +1,6 @@
 # Live ChatBot
 
-<iframe width="640" height="360" src="https://www.loom.com/embed/7260b1c1fd48418fb179fd5464d612ad?sid=1757a271-6413-49ee-a4d2-a02572202a25" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+[![Video Thumbnail](Demo)](https://www.loom.com/embed/7260b1c1fd48418fb179fd5464d612ad)
 
 [![chat flow diagram](https://mermaid.ink/img/pako:eNpVkdtqg0AQhl9lmasWkhfwohC1SQMWQiJ40e3FqJMo6q7dQyWEvHvHQ6C52539vuHfmRsUuiQI4GKwr0QaSiVEFn5JyCgXodGDJSPhW6zXQsJHmh7E5rAXR_rxZJ0Err-JzS5jYazv0NGAV_HC9kkXDblXlseezMw99upXN7SYyZbFBLu8RLH1qnC1VouQbB-8Iw43v0xSPEpxja2-nFs9LHy88FGFLtdOjJ7B4p8XsRZ563Q3fekp1ZFsr5V95MpCWAFjHdYlD-c2shJcRR0TAR9LNI0Eqe7MoXf6dFUFBM54WoHvSx4DB-TY3XPxvaydNhCcsbVcpOn6OW9gWsT9D4b1fkg?type=png)](https://mermaid.live/edit#pako:eNpVkdtqg0AQhl9lmasWkhfwohC1SQMWQiJ40e3FqJMo6q7dQyWEvHvHQ6C52539vuHfmRsUuiQI4GKwr0QaSiVEFn5JyCgXodGDJSPhW6zXQsJHmh7E5rAXR_rxZJ0Err-JzS5jYazv0NGAV_HC9kkXDblXlseezMw99upXN7SYyZbFBLu8RLH1qnC1VouQbB-8Iw43v0xSPEpxja2-nFs9LHy88FGFLtdOjJ7B4p8XsRZ563Q3fekp1ZFsr5V95MpCWAFjHdYlD-c2shJcRR0TAR9LNI0Eqe7MoXf6dFUFBM54WoHvSx4DB-TY3XPxvaydNhCcsbVcpOn6OW9gWsT9D4b1fkg)
 
