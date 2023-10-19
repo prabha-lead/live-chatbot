@@ -1,5 +1,7 @@
 # Serverless POC - Live Chatbot
 
+<iframe width="640" height="360" src="https://www.loom.com/embed/7260b1c1fd48418fb179fd5464d612ad?sid=1757a271-6413-49ee-a4d2-a02572202a25" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
 ## For AWS Configurations
 
 ```bash

@@ -1,200 +1,96 @@
-## The Magic of Serverless with Node.js Using Serverless Framework
+# Live ChatBot
 
-Ever wished to write code without the hustle of managing servers? Well, if that's the case, welcome aboard the magical carpet of serverless computing! The serverless approach takes us away from server management, offering a fantastic ride through efficient scaling, event-driven execution, and exciting cost savings. Today, we're venturing into the enchanting world of Serverless Framework, using Node.js, our ever-reliable magic wand.
+<iframe width="640" height="360" src="https://www.loom.com/embed/7260b1c1fd48418fb179fd5464d612ad?sid=1757a271-6413-49ee-a4d2-a02572202a25" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-### Serverless Architecture
+[![chat flow diagram](https://mermaid.ink/img/pako:eNpVkdtqg0AQhl9lmasWkhfwohC1SQMWQiJ40e3FqJMo6q7dQyWEvHvHQ6C52539vuHfmRsUuiQI4GKwr0QaSiVEFn5JyCgXodGDJSPhW6zXQsJHmh7E5rAXR_rxZJ0Err-JzS5jYazv0NGAV_HC9kkXDblXlseezMw99upXN7SYyZbFBLu8RLH1qnC1VouQbB-8Iw43v0xSPEpxja2-nFs9LHy88FGFLtdOjJ7B4p8XsRZ563Q3fekp1ZFsr5V95MpCWAFjHdYlD-c2shJcRR0TAR9LNI0Eqe7MoXf6dFUFBM54WoHvSx4DB-TY3XPxvaydNhCcsbVcpOn6OW9gWsT9D4b1fkg?type=png)](https://mermaid.live/edit#pako:eNpVkdtqg0AQhl9lmasWkhfwohC1SQMWQiJ40e3FqJMo6q7dQyWEvHvHQ6C52539vuHfmRsUuiQI4GKwr0QaSiVEFn5JyCgXodGDJSPhW6zXQsJHmh7E5rAXR_rxZJ0Err-JzS5jYazv0NGAV_HC9kkXDblXlseezMw99upXN7SYyZbFBLu8RLH1qnC1VouQbB-8Iw43v0xSPEpxja2-nFs9LHy88FGFLtdOjJ7B4p8XsRZ563Q3fekp1ZFsr5V95MpCWAFjHdYlD-c2shJcRR0TAR9LNI0Eqe7MoXf6dFUFBM54WoHvSx4DB-TY3XPxvaydNhCcsbVcpOn6OW9gWsT9D4b1fkg)
 
-[![Serverless Architecture](https://mermaid.ink/img/pako:eNqFkD1PwzAQhv-KdXMrBrYMSPkqIDFUTSQGzHDE19aSP1LHLkRV_zsXESTShc16_Tynu_cCnVcEGRwC9kfRFtIJkb9JKI0mFyW8i_VaSHhq263Y0SnRwCFnD6JgKt8-i0eM9Ikjo5Nb_PA7nyINN0bJxgvaD4Vik1wXtXezVc4Wobp7DTrSbFRsVKND66viH7RmtLlfQtN6JRozIxtG6q9IwaERDYWz7uh26tB7N_zOLP5etPzKYQWWgkWtuL3LBEqIR7IMZPxUtMdk-HLproxiir4ZXQdZDIlWkHrFtVUauXe7DGulow-Q7dEMdP0GCbR--A?type=png)](https://mermaid.live/edit#pako:eNqFkD1PwzAQhv-KdXMrBrYMSPkqIDFUTSQGzHDE19aSP1LHLkRV_zsXESTShc16_Tynu_cCnVcEGRwC9kfRFtIJkb9JKI0mFyW8i_VaSHhq263Y0SnRwCFnD6JgKt8-i0eM9Ikjo5Nb_PA7nyINN0bJxgvaD4Vik1wXtXezVc4Wobp7DTrSbFRsVKND66viH7RmtLlfQtN6JRozIxtG6q9IwaERDYWz7uh26tB7N_zOLP5etPzKYQWWgkWtuL3LBEqIR7IMZPxUtMdk-HLproxiir4ZXQdZDIlWkHrFtVUauXe7DGulow-Q7dEMdP0GCbR--A)
+here's an elaboration of the diagram:
 
-Here is a diagram that explains the serverless architecture:
+---
 
-Now, let's explain the diagram:
+**Websocket Integration with AWS API Gateway, Lambda, and Google Dialogflow for Live Chatbot Interaction**
 
-1. **Client**: This is the user's device, which sends an HTTP request to the API Gateway.
+In the architecture you've set up, the primary components are the Web Browser, AWS API Gateway (WebSocket), Lambda Function, Google Dialogflow, and the Customer. Here's a detailed breakdown of the flow:
 
-2. **API Gateway**: This is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs. It routes the request to the appropriate Lambda function.
+1. **Web Browser**: This represents the user's interface, typically a web application or website. When a user wants to interact with the chatbot, they initiate a request from their web browser.
 
-3. **Lambda Function**: This is where your business logic resides. AWS Lambda is a compute service that lets you run code without provisioning or managing servers. It executes your code only when needed and scales automatically.
+2. **AWS API Gateway (WebSocket)**: AWS API Gateway serves as the entry point for the user's request. You've set up a WebSocket API here, which allows for two-way communication between the user and the server. This means that once a connection is established, both the server and the client can send messages back and forth without needing to re-establish the connection.
 
-4. **DynamoDB**: This is a NoSQL database service provided by AWS, which is known for low latencies and scalability. The Lambda function can read data from or write data to DynamoDB.
+   - **HTTP API Request**: The web browser sends an HTTP API request to the API Gateway to initiate the WebSocket connection.
 
-5. **S3**: This is a storage service provided by AWS. The Lambda function can read data from or write data to an S3 bucket.
+   - **Response**: After processing, the API Gateway sends back the response to the web browser, which could be the chatbot's reply or any other relevant information.
 
-6. **External Service**: Sometimes, your Lambda function might need to interact with external services. This could be any third-party service or another AWS service.
+3. **Lambda Function**: Once the API Gateway receives the request, it invokes the Lambda function. AWS Lambda is a serverless compute service that runs your code in response to events and automatically manages the compute resources for you. In this setup, the Lambda function is responsible for processing the request and integrating with Google Dialogflow.
 
-<b>Here is a diagram that explains how serverless architecture and serverless frameworks work together:</b>
+   - **Invoke**: This represents the action of the API Gateway calling the Lambda function to handle the request.
 
-[![Serverless architecture and Serverless frameworks](https://mermaid.ink/img/pako:eNqFkUtPwzAMgP9KlPMmDtx6QOpzIIE0rZU4UA6m8baIPEoejGraf8dlHaK7cIvs77Nj-8g7K5AnfOeg37Mmaw1j6UvLcyXRhJa_suWStfy-adZsgx8RPQUpdscyotL1A1tBwAMMhI5uduY3Ngb0V0ZOxiPoNwGsiqYL0prJyicLQdw8OxlwMgoyisGAtkX2D1oSWt_OofF7OSg1IRUh5VdAZ0CxGt2n7PC6qu-t8Zea2d-J5ql0TK3GnlQHnULvWeVA48G699-1FdgrO_jL_D_OOfMEBnZ4yWR8wTU6DVLQLY4j1_KwR03tEnoK3EJUtMfWnAiFGGw9mI4nwUVc8NgLOkIhga6o58FSyGAdT7agPJ6-ASIulkc?type=png)](https://mermaid.live/edit#pako:eNqFkUtPwzAMgP9KlPMmDtx6QOpzIIE0rZU4UA6m8baIPEoejGraf8dlHaK7cIvs77Nj-8g7K5AnfOeg37Mmaw1j6UvLcyXRhJa_suWStfy-adZsgx8RPQUpdscyotL1A1tBwAMMhI5uduY3Ngb0V0ZOxiPoNwGsiqYL0prJyicLQdw8OxlwMgoyisGAtkX2D1oSWt_OofF7OSg1IRUh5VdAZ0CxGt2n7PC6qu-t8Zea2d-J5ql0TK3GnlQHnULvWeVA48G699-1FdgrO_jL_D_OOfMEBnZ4yWR8wTU6DVLQLY4j1_KwR03tEnoK3EJUtMfWnAiFGGw9mI4nwUVc8NgLOkIhga6o58FSyGAdT7agPJ6-ASIulkc)
+4. **Google Dialogflow**: Dialogflow is a natural language understanding platform used to design and integrate a conversational user interface into mobile apps, web applications, devices, bots, and more. In this architecture, the Lambda function integrates with Dialogflow to process the user's message and determine the appropriate response based on the chatbot's design.
 
-7. **Serverless Framework**: This is a free and open-source web framework written using Node.js. Serverless is the first framework developed for building applications on AWS Lambda, a serverless computing platform provided by Amazon as a part of Amazon Web Services. It deploys and manages the Lambda function and API Gateway.
+   - **Integration**: This step signifies the Lambda function's communication with Dialogflow to process the user's message.
 
-8. After processing the request, the Lambda function sends a response back to the API Gateway, which then forwards the response to the Client.
+5. **Customer**: This represents the end user or the person interacting with the chatbot. The chatbot interaction takes place between Dialogflow and the customer, facilitated by the entire architecture.
 
-This is a simplified view of how a serverless architecture and serverless frameworks work together. In a real-world application, there might be multiple Lambda functions, each serving a specific purpose. There might also be other services involved, such as AWS Cognito for user management, AWS IAM for access control, and more.
+   - **Chatbot Interaction**: This is the two-way communication between the customer and Dialogflow, where the customer sends messages and receives responses from the chatbot.
 
-<b>Here is a diagram that explains the deployment process of a serverless framework with architecture:</b>
+In summary, the architecture you've set up allows for real-time, two-way communication between the user and the chatbot. The user sends a message from their web browser, which goes through the AWS API Gateway and is processed by the Lambda function. The Lambda function then communicates with Google Dialogflow to get the chatbot's response, which is then relayed back to the user through the same path.
 
-[![Deployment process](https://mermaid.ink/img/pako:eNqFkj1rwzAQhv-KuDmhQzcPBX-mhQ4hNmSoOqjWpTG1JFcfCSbkv_dUO4OhpJu493lPd690gdZIhAQ-rRiOrMm4Zix941DgCXszoOXwztZrxmFvO4-O5cRzoNITy4ir0Z7Q9ugcq6xQeDb2iyyxTTb5Chx6M7rZk5Mn3dcs702QlbFK-M7o2ZFPjtyioKtmRxEd2xe2odpZjPfQktBXoT6kYFXQ7X-dq7jnqIUyRXaP28Q9H2cinYjnptmyHX4HdP42aJSLSd6ZEMNaAmUEyhlAIR9-I70Nc0_cLEQ3GO3wr1uXUgorUEgRd5Je-BJBDv6IioCEjhIPIvQ0HddXQkXwph51C4m3AVcQBkkhFJ2gv6GWxVJ23lhIDqJ3eP0Bs8OuGA?type=png)](https://mermaid.live/edit#pako:eNqFkj1rwzAQhv-KuDmhQzcPBX-mhQ4hNmSoOqjWpTG1JFcfCSbkv_dUO4OhpJu493lPd690gdZIhAQ-rRiOrMm4Zix941DgCXszoOXwztZrxmFvO4-O5cRzoNITy4ir0Z7Q9ugcq6xQeDb2iyyxTTb5Chx6M7rZk5Mn3dcs702QlbFK-M7o2ZFPjtyioKtmRxEd2xe2odpZjPfQktBXoT6kYFXQ7X-dq7jnqIUyRXaP28Q9H2cinYjnptmyHX4HdP42aJSLSd6ZEMNaAmUEyhlAIR9-I70Nc0_cLEQ3GO3wr1uXUgorUEgRd5Je-BJBDv6IioCEjhIPIvQ0HddXQkXwph51C4m3AVcQBkkhFJ2gv6GWxVJ23lhIDqJ3eP0Bs8OuGA)
+## Live Chatbot Architecture
 
-1. **Developer**: This is you or your team who writes the serverless application code.
+![Live Chatbot Architecture](assets/images/live-chatbot.png)
 
-2. **Serverless Framework**: This is a free and open-source web framework written using Node.js. Serverless is the first framework developed for building applications on AWS Lambda, a serverless computing platform provided by Amazon as a part of Amazon Web Services. It deploys and manages the serverless application.
+The architecture diagram displays a Live Chatbot system built using AWS and Google Cloud Platform (GCP) services. Let's dissect it:
 
-3. **AWS CloudFormation**: This is a service that helps you model and set up your Amazon Web Services resources so you can spend less time managing those resources and more time focusing on your applications that run in AWS. The Serverless Framework deploys your application using AWS CloudFormation.
+### Components:
 
-After the deployment, the Developer can send an HTTP request to the API Gateway, which routes the request to the Lambda function. The Lambda function can read data from or write data to DynamoDB and S3. After processing the request, the Lambda function sends a response back to the API Gateway, which then forwards the response to the Developer.
+1. **Browser**: Represents the client-side application or webpage from where users will interact with the chatbot.
 
-This is a simplified view of the deployment process of a serverless framework with architecture. In a real-world application, there might be multiple Lambda functions, each serving a specific purpose. There might also be other services involved, such as AWS Cognito for user management, AWS IAM for access control, and more.
+2. **Customers**: Symbolizes the end-users who are engaging with the chatbot through a browser.
 
-### Services can interact with Serverless
+3. **AWS API Gateway**: It acts as an entry point for the Websocket requests from the browser. API Gateway can handle and route requests to AWS Lambda.
 
-Here's a brief explanation of the services that can connect to AWS Lambda:
+4. **AWS Lambda**: A serverless compute service that can run code in response to events. Here, it's used to process user input and interact with Google Dialogflow.
 
-1. **Amazon S3 (Simple Storage Service)**: Lambda can be set up to respond to events in S3 like the creation, deletion, or modification of files (objects) in a bucket.
+5. **Amazon CloudWatch**: A monitoring service. In this architecture, it seems to be set up for monitoring Lambda's performance and possibly logging requests and responses.
 
-2. **Amazon DynamoDB**: Lambda can process DynamoDB Streams, which contain all changes to items in the DynamoDB table.
+6. **Amazon DynamoDB**: A NoSQL database service. This could be used to store user sessions, chat histories, or any other chat-related data.
 
-3. **Amazon API Gateway**: API Gateway can route HTTP(S) requests to Lambda functions.
+7. **Google DialogFlow Engine**: This is the core of the chatbot. It processes the user's input, understands the intent, and generates a relevant response.
 
-4. **Amazon SQS (Simple Queue Service)**: Lambda can poll for messages on an SQS queue and then process them.
+8. **Session Storage in Google Platform**: A storage mechanism on GCP, possibly using a service like Firestore or Google Cloud Storage, to keep track of user sessions for the chatbot.
 
-5. **Amazon Kinesis**: Lambda can process Kinesis data streams or Kinesis Firehose data streams.
+### Flow:
 
-6. **Amazon CloudWatch**: Lambda can respond to CloudWatch alarms or logs.
+1. A user interacts with the chatbot via a browser.
+2. The user's input/request is sent to the AWS API Gateway.
+3. API Gateway triggers the AWS Lambda function, passing the user's message as payload.
+4. AWS Lambda processes the message and sends it to Google Dialogflow for interpretation and response generation.
+5. Dialogflow processes the user's input, may retrieve or store session data in the GCP Session Storage, generates a response, and sends it back to AWS Lambda.
+6. AWS Lambda receives the response and can log this interaction in CloudWatch and/or store data in DynamoDB.
+7. The response is then sent back through API Gateway to the browser for the user to see.
 
-Here is the diagram showing how AWS Lambda can interact with other AWS services:
+### Implementation on AWS: (Everything defined at serverless.yaml file)
 
-![AWS Architecture](assets/images/aws_architecture.png)
+1. **Set Up API Gateway**:
 
-As shown in the diagram:
+   - Create a new Websocket in the AWS API Gateway console.
+   - Define a method to accept chat messages.
+   - Link this method to trigger a Lambda function.
 
-1. **AWS Lambda** can interact with **Amazon S3**. For example, it can be triggered by changes in an S3 bucket, such as the creation or deletion of files.
+2. **Lambda Function**:
 
-2. **AWS Lambda** can interact with **Amazon DynamoDB**. For instance, it can process DynamoDB Streams, which contain all changes to items in a DynamoDB table.
+   - Write a Lambda function in a language of your choice (e.g., Python, Node.js).
+   - Use the Dialogflow API client library in the Lambda function to send user messages to Dialogflow and fetch responses.
+   - Ensure your Lambda has IAM permissions to interact with CloudWatch for logging and DynamoDB for data storage.
 
-3. **AWS Lambda** can interact with **Amazon API Gateway**. The API Gateway can route HTTP(S) requests to Lambda functions.
+3. **DynamoDB**:
 
-4. **AWS Lambda** can interact with **Amazon SQS**. Lambda can poll for messages on an SQS queue and then process them.
+   - Set up a table to store chat logs or any relevant data.
+   - From Lambda, you can use AWS SDKs to insert, retrieve, or update records in DynamoDB.
 
-5. **AWS Lambda** can interact with **Amazon Kinesis**. Lambda can process Kinesis data streams or Kinesis Firehose data streams.
+4. **Integration with Dialogflow**:
 
-6. **AWS Lambda** can interact with **Amazon CloudWatch**. Lambda can respond to CloudWatch alarms or logs.
+   - You'll need to set up authentication with GCP, usually using a service account JSON key.
+   - In the Lambda function, use this key to authenticate and interact with the Dialogflow API.
 
-This diagram provides a visual representation of how AWS Lambda can be used in conjunction with other AWS services to build complex and scalable applications.
-
-<b> Here is the diagram showing how AWS Cognito works with AWS Lambda: </b>
-
-![Cognito AWS Architecture](assets/images/cognito_aws_architecture.png)
-
-As shown in the diagram:
-
-1. A **Client** (for example, a user on a web or mobile application) authenticates with **Amazon Cognito**. Amazon Cognito provides authentication, authorization, and user management for web and mobile apps. Users can sign in directly with a username and password, or through a third party such as Facebook, Amazon, or Google.
-
-2. **Amazon Cognito** can then trigger **AWS Lambda** functions based on certain events, such as user sign-up, user confirmation, or user sign-in. These Lambda functions can be used to add custom logic during the authentication flow.
-
-3. The **AWS Lambda** function can respond to the **Amazon API Gateway**, which is a fully managed service that makes it easy for developers to create, publish, maintain, monitor, and secure APIs at any scale.
-
-4. The **Amazon API Gateway** then returns the response to the **Client**.
-
-This diagram provides a visual representation of how AWS Cognito can be used in conjunction with AWS Lambda to handle user authentication and execute custom logic during the authentication flow.
-
-<b> Here is the diagram showing how AWS Lambda, Amazon SQS, and Amazon SES interact: </b>
-
-![AWS Architecture](assets/images/sqs_ses_aws_architecture_diagram.png)
-
-As shown in the diagram:
-
-1. A **Client** (for example, a user or an application) triggers the **Lambda: Process Info** function. This could be to process some information and prepare it for sending an email.
-
-2. The **Lambda: Process Info** function sends the processed information to **Amazon SQS**. Amazon SQS is a fully managed message queuing service that enables you to decouple and scale microservices, distributed systems, and serverless applications. SQS is used here as a middleware to queue the information and ensure that it is reliably delivered to the next Lambda function. It also allows for tracking of failures, as messages that cannot be processed are moved to a dead-letter queue.
-
-3. **Amazon SQS** then triggers the **Lambda: Send Email** function. This function is responsible for sending the email.
-
-4. The **Lambda: Send Email** function sends the email via **Amazon SES**. Amazon SES is a cloud-based email sending service designed to help digital marketers and application developers send marketing, notification, and transactional emails.
-
-This diagram provides a visual representation of how AWS Lambda, Amazon SQS, and Amazon SES can be used together to process information, queue it for reliable delivery, and send an email. The use of Amazon SQS as a middleware allows for robust error handling and tracking of failures.
-
-### Getting Your Magic Carpet Ready
-
-Before we embark on this journey, we need to have a few essentials handy:
-
-- An updated installation of Node.js and npm, your trusty companions for this adventure.
-- An account with a cloud provider. We will be using AWS as our magic cloud service for this expedition.
-- The AWS CLI installed and configured with your secret AWS spell (credentials).
-
-### Step 1: Summoning the Serverless Framework
-
-First things first, let's conjure the Serverless Framework on your system. Here's the magic chant:
-
-```
-npm install -g serverless
-```
-
-With this incantation, we've invoked the Serverless Framework, an open-source, cloud-agnostic Command Line Interface (CLI). Now we can effortlessly develop and deploy serverless architectures.
-
-### Step 2: Creating a Magical Service
-
-Next, we'll weave a new Serverless service. In the mystical realm of Serverless, a service is an enchanted assembly of functions, events, and resources, all deployed in unison.
-
-Here's the magic phrase to create a new service using an AWS Node.js template:
-
-```
-serverless create --template aws-nodejs --path magic-service
-```
-
-Abracadabra! We have a new directory named `magic-service`, with two files within its walls: `handler.js` (home to our function code), and `serverless.yml` (the scroll that narrates our service configuration).
-
-### Step 3: Crafting the Magical `serverless.yml` Scroll
-
-The `serverless.yml` scroll defines our service, detailing the provider, functions, events, and resources.
-
-```yml
-service: magic-service
-
-provider:
-  name: aws
-  runtime: nodejs14.x
-  stage: dev
-  region: us-east-1
-
-functions:
-  hello:
-    handler: handler.hello
-    events:
-      - http:
-          path: hello
-          method: get
-```
-
-This scroll narrates the tale of a function named `hello`, handled by the `hello` function exported from our `handler.js` scroll. The magic happens when an HTTP GET request is sent to the `/hello` path.
-
-### Step 4: Penning the Spell in `handler.js`
-
-Let's move on to inscribing our magical function on the `handler.js` scroll. For now, our enchantment will simply echo a "Hello, World!" message to the universe:
-
-```javascript
-module.exports.hello = async (event, context) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: "Hello, World!",
-    }),
-  };
-};
-```
-
-### Step 5: Unleashing the Magic: Deployment
-
-Finally, it's time to reveal our spell to the world:
-
-```
-serverless deploy
-```
-
-This incantation wraps and sends our service to AWS, guided by the instructions from our `serverless.yml` scroll.
-
-Once the magic dust settles, the CLI will unveil the information about your service, including the deployed functions and their endpoints. You can test your spell by sending a request to the provided endpoint.
-
-### A Magical Conclusion
-
-Congratulations, sorcerer! You've just ventured into the magical realm of serverless applications using the Serverless Framework and Node.js. Remember, this is just the beginning of the spellbook; the Serverless Framework supports a vast array of enchantments, functions, and resources. It's an incredibly powerful tool for creating, deploying, and managing serverless charms. So, keep your wand ready, and prepare for more magical adventures ahead!
+5. **CloudWatch**
+   - It's created by default from the Lambda function using serverless yaml configuration.
